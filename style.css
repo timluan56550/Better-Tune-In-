@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+  padding: 0;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+#everything{
+width: 100vw;
+height: 100vh; 
+aspect-ratio: 16/9; 
+max-width: calc(100vh * (16 / 9)); 
+max-height: calc(100vw * (9 / 16));
+position: relative;
+ box-sizing: border-box; 
+display: flex; 
+justify-content: space-between; 
+align-items:stretch; 
+container-type: size; 
+overflow: hidden;
+background-image: url(https://placehold.co/100x100?text=Hello+there);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+ }
