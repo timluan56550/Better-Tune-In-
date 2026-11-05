@@ -46,9 +46,64 @@ border: 2px dashed blue;
   border: 2px dashed #404b5a;
  }
  #radioBox{
-  width: 20%;
+  width: 25%;
   height: 100%;
-    margin-left: 10cqmin;
-
+  margin-left: 10cqmin;
   border: 2px dashed #225192;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ }
+ #frequency{
+  border: 2px dashed orange;
+  display: flex;
+  justify-content: center;
+  gap: 1cqmin;
+  align-items: center;
+ }
+#radioDisplay{
+  background-color: #2b3544;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1cqmin solid #000;
+  padding: 0.2cqmin 0.3cqmin;
+
+}
+#frequencyNumber{
+  font-size: 2cqmin;
+  font-weight: bold;
+}
+#radioTuner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed gold;
+}
+#radioLabel{
+  color: #afabab;
+  font-size: 2cqmin;
+  font-weight: bold;
+}
+#freqSlider{
+  width: 30%;
+  cursor: pointer;
+  background-color: rgb(106, 96, 96);
+  display: flex;
+  justify-items: center;
+}
+
+
+ /* Arrow buttons */
+ .arrowButton{
+  background-color: #2b3544;
+  cursor: pointer;
+  user-select: none;
+ }
+ .arrowButton:hover{
+  filter: brightness(120%);
+ }
+ .arrowButton:active{
+  background-color: #203629;
+  color: #000;
  }

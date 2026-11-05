@@ -20,9 +20,18 @@
         <div id="radioBox">
             <div id="frequency">
                 <button id="previousFrequency" class="arrowButton">◀</button>
-            
-                <button id="previousFrequency" class="arrowButton">◀</button>
+            <div id="radioDisplay">
+                <!-- AM radio amplitutes is from 535 kHz to 1705 kHz -->
+                <span id="frequencyNumber">535 kHz</span>
+            </div>
+                <button id="previousFrequency" class="arrowButton">▶</button>
 
+            </div>
+
+            <div id="radioTuner">
+                <span id="radioLabel">TUNER DIAL</span>
+                <!-- 535 kHz to 1705 kHz -->
+                <input type="text" id="freqSlider" min="535" max="1705" step="10" value="535kHz"/>
             </div>
         </div>
 
