@@ -1,7 +1,7 @@
 body{
     margin: 0;
   padding: 0;
-  background-color: #121212;
+  background-color: #fbf9f9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,12 +16,39 @@ max-height: calc(100vw * (9 / 16));
 position: relative;
  box-sizing: border-box; 
 display: flex; 
-justify-content: space-between; 
-align-items:stretch; 
-container-type: size; 
+flex-direction: column;
 overflow: hidden;
-background-image: url(https://placehold.co/100x100?text=Hello+there);
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
+background-color: rgb(36, 35, 35);
+border: 2px dashed blue;
+ }
+
+ #windowDisplay{
+  flex: 7;
+  position: relative;
+  box-sizing: border-box;
+  border: 2px dashed gold;
+ }
+ #deskDisplay{
+  flex: 3;
+  box-sizing: border-box;
+  padding: 1cqmin 2cqmin;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10cqmin;
+  border: 2px dashed rgb(26, 255, 0);
+
+ }
+
+ #notepadBox{
+  width: 20%;
+  height: 100%;
+  border: 2px dashed #404b5a;
+ }
+ #radioBox{
+  width: 20%;
+  height: 100%;
+    margin-left: 10cqmin;
+
+  border: 2px dashed #225192;
  }
