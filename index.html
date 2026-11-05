@@ -22,16 +22,16 @@
                 <button id="previousFrequency" class="arrowButton">◀</button>
             <div id="radioDisplay">
                 <!-- AM radio amplitutes is from 535 kHz to 1705 kHz -->
-                <span id="frequencyNumber">535 kHz</span>
+                <span id="frequencyNumber">505 kHz</span>
             </div>
-                <button id="previousFrequency" class="arrowButton">▶</button>
+                <button id="nextFrequency" class="arrowButton">▶</button>
 
             </div>
-
+<img src="https://placehold.co/50x50">
             <div id="radioTuner">
-                <span id="radioLabel">TUNER DIAL</span>
-                <!-- 535 kHz to 1705 kHz -->
-                <input type="text" id="freqSlider" min="535" max="1705" step="10" value="535kHz"/>
+                <span id="radioLabel">MANUAL TUNE</span>
+                <!-- 505 kHz to 1505 kHz- can be anything-->
+                <input type="text" id="freqInput" value="505"/>
             </div>
         </div>
 
@@ -46,6 +46,6 @@
     </div>
 
 </div>
-        <script src="scripts/game.js"></script>
+        <script src="scripts/radio.js"></script>
     </body>
 </html>

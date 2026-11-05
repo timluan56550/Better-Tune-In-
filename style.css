@@ -85,7 +85,7 @@ border: 2px dashed blue;
   font-size: 2cqmin;
   font-weight: bold;
 }
-#freqSlider{
+#freqInput{
   width: 30%;
   cursor: pointer;
   background-color: rgb(106, 96, 96);
