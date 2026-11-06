@@ -20,6 +20,7 @@ flex-direction: column;
 overflow: hidden;
 background-color: rgb(36, 35, 35);
 border: 2px dashed blue;
+container-type: size;
  }
 
  #windowDisplay{
@@ -40,15 +41,15 @@ border: 2px dashed blue;
 
  }
 
- #notepadBox{
-  width: 20%;
-  height: 100%;
+ #notebookBox{
+  width: 25cqmin;
+  height: 20cqmin;
   border: 2px dashed #404b5a;
  }
  #radioBox{
-  width: 25%;
-  height: 100%;
-  margin-left: 10cqmin;
+  width: 25cqmin;
+  height: 25cqmin;
+  margin-left: 30cqmin;
   border: 2px dashed #225192;
   display: flex;
   flex-direction: column;
@@ -63,6 +64,8 @@ border: 2px dashed blue;
  }
 #radioDisplay{
   background-color: #2b3544;
+  width: 10cqmin;
+  height: 2.4cqmin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +89,7 @@ border: 2px dashed blue;
   font-weight: bold;
 }
 #freqInput{
-  width: 30%;
+  width: 5cqmin;
   cursor: pointer;
   background-color: rgb(106, 96, 96);
   display: flex;
@@ -99,6 +102,9 @@ border: 2px dashed blue;
   background-color: #2b3544;
   cursor: pointer;
   user-select: none;
+  width: 3.5cqmin;
+  height: 3.2cqmin;
+  font-size: 2cqmin;
  }
  .arrowButton:hover{
   filter: brightness(120%);
@@ -106,4 +112,120 @@ border: 2px dashed blue;
  .arrowButton:active{
   background-color: #203629;
   color: #000;
+ }
+ /* makes sure its hidden */
+ .hidden{
+  display: none !important;
+ }
+/* object on the desk */
+ #notebookCover{
+  width: 100%;
+  height: 100%;
+background-image: url(https://placehold.co/10x10);
+cursor: pointer;
+box-sizing: border-box;
+background-repeat: no-repeat;
+background-size: cover;
+ }
+ #notebookCover:hover{
+  transform: translateY(-0.5cqmin);
+  filter: brightness(120%);
+ }
+/* menu */
+ #notebookDisplay{
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  right: 10cqmin;
+  width: 66cqmin;
+  height: 85cqmin;
+  display: flex;
+  align-items: start;
+background-repeat: no-repeat;
+background-size: cover;
+z-index: 8;
+box-sizing: border-box;
+font-family: monospace;
+border: 2px dashed red;
+ }
+
+ #closeNotebookButton{
+position: absolute;
+bottom: 1cqmin;
+right: 11.7cqmin;
+width: 56cqmin;
+height: 10cqmin;
+font-size: 4cqmin;
+font-weight: bold;
+cursor: pointer;
+z-index: 40;
+border-radius: 0.5cqmin;
+border: 0.4cqmin solid #000;
+ }
+ #closeNotebookButton:hover{
+  filter: brightness(120%);
+ }
+ #notebookTabs{
+  display: flex;
+  flex-direction: column;
+  gap: 4cqmin;
+  margin-top: 5cqmin;
+  margin-right: -5cqmin;
+  box-sizing: border-box;
+    border: 2px dashed purple;
+
+ }
+ .tab, .tabActive{
+  background-color: pink;
+  color: #2f2d2d;
+  width: 10cqmin;
+  height: 12cqmin;
+  border-right: none;
+  border-radius: 1cqmin 0 0 1cqmin;
+font-size: 2cqmin;
+font-weight: bold;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+box-sizing: border-box;
+z-index: 3;
+
+ }
+ .tabActive{
+  cursor: default;
+  transform: translateX(-2cqmin);
+
+  border-radius: 1cqmin;
+
+
+z-index: 30;
+ }
+ .tab:hover{
+  filter: brightness(120%);
+  transform: translateX(-2cqmin);
+ }
+
+ /* pages */
+ #notebookPage{
+  flex: 1;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  padding: 2cqmin;
+  box-sizing: border-box;
+  overflow-y: hidden;
+    border: 2px dashed blue;
+    z-index: 20;
+
+ }
+ .notebook{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2cqmin;
+  border: 2px dashed gold;
+  background-color: grey;
  }

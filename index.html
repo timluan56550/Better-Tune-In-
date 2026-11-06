@@ -21,31 +21,53 @@
             <div id="frequency">
                 <button id="previousFrequency" class="arrowButton">◀</button>
             <div id="radioDisplay">
-                <!-- AM radio amplitutes is from 535 kHz to 1705 kHz -->
-                <span id="frequencyNumber">505 kHz</span>
+                <!-- AM 500 kHz to 1500 kHz -->
+                <span id="frequencyNumber">500 kHz</span>
             </div>
                 <button id="nextFrequency" class="arrowButton">▶</button>
 
             </div>
-<img src="https://placehold.co/50x50">
+<img src="https://placehold.co/50x20">
             <div id="radioTuner">
                 <span id="radioLabel">MANUAL TUNE</span>
-                <!-- 505 kHz to 1505 kHz- can be anything-->
-                <input type="text" id="freqInput" value="505"/>
+                <!-- 500 kHz to 1500 kHz- can be anything-->
+                <input type="text" id="freqInput" value="500"/>
             </div>
         </div>
 
 
 
-        <div id="notepadBox">
+        <div id="notebookBox">
+            <!-- Object on the desk-->
+            <div id="notebookCover">
 
+            </div>
+
+            <!-- Menu when you open it up -->
+            
         </div>
+<div id="notebookDisplay" class="hidden">
+                <!-- tabs -->
+                <div id="notebookTabs">
+                    <button class="tabActive" id="tabButton1">1. Record</button>
+                    <button class="tab" id="tabButton2">2. Guess</button>
+                    <button class="tab" id="tabButton3">3. Info</button>
+                </div>
+                <!-- the page -->
+                <div id="notebookPage">
+                    <div class="notebook">
 
-        
+                    </div>
+                </div>
+</div>
+<button id="closeNotebookButton" class="hidden">X</button>
+
 
     </div>
 
 </div>
         <script src="scripts/radio.js"></script>
+        <script src="scripts/notebook.js"></script>
+
     </body>
 </html>
