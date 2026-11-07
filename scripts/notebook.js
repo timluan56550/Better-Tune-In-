@@ -29,13 +29,7 @@ const rows= [
     "Fake help"
 ]
 
-const anomalies = [
-    {
-        id: "phantom",
-        name: "Phantom",
-        evidence: ["Whispering/500-700", "No Static/710-900"]
-    }
-]
+
 // function guessPage()
 
 function getEvidence(row,column){
@@ -121,10 +115,102 @@ checkboxes.forEach((box)=>{
         //removes the evidence from the array
         checkedEvidence.delete(evid);
     }
+        })
     })
 }
 
-)}
+
+
+
+
+
+
+
+const anomalies = [
+    {
+        id: "phantom",
+        name: "Phantom",
+        evidence: ["Whispering/500-700", "No Static/710-900"]
+    },
+    {
+    id: "banshee",
+    name: "Banshee",
+    evidence: ["Screeches/910-1100", "Breathing/1110-1300"]
+  },
+  {
+    id: "revenant",
+    name: "Revenant",
+    evidence: ["Heart Beat/500-700", "Loud Static/1310-1500"]
+  },
+  {
+    id: "shade",
+    name: "Shade",
+    evidence: ["Red Effect/710-900", "Fake help/1310-1500"]
+  }
+]
+
+function guessPage(){
+    let grid =""
+//for each anomaly
+    anomalies.forEach((anomaly)=>{
+        //start uncrossed
+        let isEliminated=false
+//for each evidence in checked Evidenced
+        checkedEvidence.forEach((evidenceClue)=>{
+            //If the monsters evidences doesnt include a checked clue, make it not an option
+            if (!anomaly.evidence.includes(evidenceClue)){
+                isEliminated=true
+            }
+        })
+
+        let cardClass="monsterCard"
+        let overlays=""
+         if(circledMonster===anomaly.id){
+            cardClass+=" circled"
+            overlays+= "<img class='cardOverlay circleOverlay' src='Xunmark.png'>"
+
+        }else if(isEliminated){
+            cardClass+=" eliminated"
+            overlays+= "<img class='cardOverlay strikeOverlay' src='Xmark.png'>"
+        }
+       
+
+        grid+=
+        //<div class='cardClass' data-id='anomoly.id'>
+        //<span class ='monsterName'> anomoly.name </span> </div>
+        "<div class='"+ cardClass +
+         "' data-id='"+ anomaly.id + "'>" +
+         "<span class='monsterName'>"+anomaly.name+"</span>"+
+         overlays +
+         "</div>"
+
+    })
+    //puts all the html into teh page
+    notebookPageClass.innerHTML="<div id='guessGrid'>"+grid+"</div>"
+
+
+    //each card with the class monsterCard
+    let cards=notebookPageClass.querySelectorAll(".monsterCard")
+    cards.forEach((card)=>{
+        card.addEventListener("click", ()=>{
+            //sets id to id of the card
+            let id = card.getAttribute("data-id")
+            //when clicked on a card, (null) it first does teh else, then unselect makes it null
+            if (circledMonster===id){
+                circledMonster=null
+            }else{
+                circledMonster=id
+            }
+            //refresh when clicked
+            guessPage()
+        })
+    })
+}
+
+
+
+
+
 
 
 
