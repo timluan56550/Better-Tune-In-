@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+
+
 body{
     margin: 0;
   padding: 0;
@@ -6,6 +9,8 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  font-family: 'Caveat', monospace;
+
 }
 #everything{
 width: 100vw;
@@ -144,6 +149,8 @@ z-index: 8;
 box-sizing: border-box;
 font-family: monospace;
 border: 2px dashed red;
+  font-family: 'Caveat';
+
  }
 
  #closeNotebookButton{
@@ -151,23 +158,23 @@ position: absolute;
 bottom: 1cqmin;
 right: 11.7cqmin;
 width: 56cqmin;
-height: 10cqmin;
-font-size: 4cqmin;
+height: 12cqmin;
+font-size: 8cqmin;
 font-weight: bold;
 cursor: pointer;
 z-index: 40;
 border-radius: 0.5cqmin;
-border: 0.4cqmin solid #000;
- }
+border-width: 0;
+filter: opacity(0.2)}
  #closeNotebookButton:hover{
-  filter: brightness(120%);
+  filter: brightness(20%);
  }
  #notebookTabs{
   display: flex;
   flex-direction: column;
   gap: 4cqmin;
   margin-top: 5cqmin;
-  margin-right: -5cqmin;
+  margin-right: -4cqmin;
   box-sizing: border-box;
     border: 2px dashed purple;
 
@@ -175,11 +182,11 @@ border: 0.4cqmin solid #000;
  .tab, .tabActive{
   background-color: pink;
   color: #2f2d2d;
-  width: 10cqmin;
+  width: 13cqmin;
   height: 12cqmin;
   border-right: none;
   border-radius: 1cqmin 0 0 1cqmin;
-font-size: 2cqmin;
+font-size: 3cqmin;
 font-weight: bold;
 cursor: pointer;
 display: flex;
@@ -187,12 +194,13 @@ align-items: center;
 justify-content: center;
 box-sizing: border-box;
 z-index: 3;
+  font-family: 'Caveat';
+
 
  }
  .tabActive{
   cursor: default;
-  transform: translateX(-2cqmin);
-
+  transform: translateX(-3.5cqmin);
   border-radius: 1cqmin;
 
 
@@ -200,7 +208,7 @@ z-index: 30;
  }
  .tab:hover{
   filter: brightness(120%);
-  transform: translateX(-2cqmin);
+  transform: translateX(-3.5cqmin);
  }
 
  /* pages */
@@ -210,7 +218,7 @@ z-index: 30;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
-  padding: 2cqmin;
+  /* padding: 2cqmin; */
   box-sizing: border-box;
   overflow: hidden;
     border: 2px dashed blue;
@@ -227,7 +235,7 @@ z-index: 30;
   /* gap: 2cqmin; */
   border: 2px dashed gold;
   background-color: grey;
-  padding: 15cqmin 2cqmin 2cqmin 2cqmin;
+  padding: 10cqmin 2cqmin 2cqmin 2cqmin;
  }
 
  .pageHeader{
@@ -238,23 +246,27 @@ z-index: 30;
   table-layout: fixed;
   /* prevents double bordor lines */
   border-collapse: collapse;
-  font-size: 2cqmin;
+  font-size: 2.5cqmin;
   margin-top: 1cqmin;
+  background-color: rgb(199, 184, 164);
  }
  #evidenceTable th,
  #evidenceTable td{
-  border: 0.2cqmin solid rgb(74, 47, 28);
-  padding: 0.4cqmin 0.2cqmin;
+  border: 0.2cqmin solid rgb(160, 150, 143);
   text-align: center;
   box-sizing: border-box;
+height: 7.5cqmin
  }
   #evidenceTable th{
     font-weight: bold;
+    font-size: 2.7cqmin;
+      padding: 0.4cqmin 0.2cqmin;
+
   }
 /* for the first cell in each row */
 #evidenceTable td:first-child,
 #evidenceTable th:first-child{
-width: 17%;
+width: 16%;
 text-align: left;
 font-weight: bold;
 white-space: normal;
@@ -268,14 +280,20 @@ padding: 0;
 /* for all the checkboxs */
 #evidenceTable input[type="checkbox"]{
   appearance: none;
-  width: 4cqmin;
-  height: 4cqmin;
+  width: 90%;
+  height: 90%;
   cursor: pointer;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+     background-image:url("Xunmark.png");
+     background-size: 110%;
+
 }
 #evidenceTable input[type="checkbox"]:checked{
  background-image:url("Xmark.png");
  filter:brightness(60%)
+}
+#evidenceTable tr:nth-child(even){
+  background-color: antiquewhite;
 }

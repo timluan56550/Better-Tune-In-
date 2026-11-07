@@ -6,7 +6,9 @@ const tabButton2=document.getElementById("tabButton2")
 const tabButton3=document.getElementById("tabButton3")
 //gets the class
 const notebookPageClass=document.querySelector(".notebook")
-
+//set is prevent duplicates
+let checkedEvidence=new Set()
+let circledMonster=null;
 //columns
 const columns= [
     "500-700",
@@ -27,9 +29,26 @@ const rows= [
     "Fake help"
 ]
 
+const anomalies = [
+    {
+        id: "phantom",
+        name: "Phantom",
+        evidence: ["Whispering/500-700", "No Static/710-900"]
+    }
+]
+// function guessPage()
+
+function getEvidence(row,column){
+    return row + "/" + column
+
+}
+
 function showPage(page){
 if (page==="evidence"){
     evidencePage()
+}
+if (page==="guess"){
+    guessPage()
 }
 }
 
@@ -50,7 +69,7 @@ function evidencePage(){
 //     <td>Data 3</td>
 //   </tr>
 
-    let header = "<th>"+"Evidence"+"</th>"
+    let header = "<th></th>"
     //for each string in the array add it to a header for columns
     columns.forEach((string)=>{
         header+="<th>"+string+"</th>"
@@ -59,23 +78,53 @@ function evidencePage(){
     //Rows
     let body="";
     //for each string the array
-    rows.forEach((string)=>{
+    rows.forEach((rows)=>{
         body+="<tr>"+
-        "<td>"+string+"</td>"
+        "<td>"+rows+"</td>"
     
     //this is for every column per row
-    columns.forEach(()=>{
-        body+="<td>"+"<input type='checkbox'>"+"</td>"
+    columns.forEach((columns)=>{
+        //combines the row header and the colum header
+        let evidence = getEvidence(rows, columns)
+
+        //this makes it remember what you have checked
+        let remember=""
+        if (checkedEvidence.has(evidence)){
+            remember = " checked"
+        }
+//<td><input type='checkbox' value='(evidence)' checked></td>
+        body+="<td>"+
+        "<input type='checkbox' value='"+ evidence +
+        "'"+remember+
+        ">"+"</td>"
     })
     body+="</tr>"
 })
 
 notebookPageClass.innerHTML=
-"<h2 class='pageHeader'>EVIDENCE</h2>"+
+"<h2 class='pageHeader'></h2>"+
 "<table id='evidenceTable'>"+
 "<tr>" + header+"</tr>"+
 body +"</table>"
+//puts all the checkboxes into checkboxes
+let checkboxes=notebookPageClass.querySelectorAll("#evidenceTable input[type='checkbox']")
+//for each checkbox
+checkboxes.forEach((box)=>{
+    //checks when the checkbox is clicked
+    box.addEventListener("change", (e)=>{
+        //sets evid to the checkboxes value set  above
+    let evid= e.target.value
+    if(e.target.checked){
+        //adds teh evidence to the lsit of clues
+        checkedEvidence.add(evid)
+    }else{
+        //removes the evidence from the array
+        checkedEvidence.delete(evid);
+    }
+    })
 }
+
+)}
 
 
 
