@@ -68,10 +68,6 @@ container-type: size;
   align-items: center;
  }
 
-#frequencyNumber{
-  font-size: 2.5cqmin;
-  font-weight: bold;
-}
 
 
 #freqInput{
@@ -95,8 +91,8 @@ container-type: size;
   background-color: #2b3544;
   cursor: pointer;
   user-select: none;
-  width: 3.5cqmin;
-  height: 3.2cqmin;
+  width: 4cqmin;
+  height: 4cqmin;
   font-size: 2cqmin;
   display: flex;
   justify-content: center;
@@ -345,8 +341,8 @@ filter:opacity(0.7);
   background-color: #891b1a;
   cursor: pointer;
   user-select: none;
-  width: 2.5cqmin;
-  height: 2.5cqmin;
+  width: 3cqmin;
+  height: 3cqmin;
 bottom: 1cqmin;
 right: 1cqmin;
   font-family: "Caveat";
@@ -356,6 +352,11 @@ right: 1cqmin;
 
 
 
+}
+#radioDisplay{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #radioPower.on{
   background-color: green;
@@ -386,4 +387,54 @@ transform: translateY(-0.2cqmin);
   font-size: 3cqmin;
   font-weight: bold;
   color:  red;
+}
+
+#hud{
+  position: absolute;
+  top: 2cqmin;
+  left: 2cqmin;
+  padding: 1.5cqmin;
+  display: flex;
+  flex-direction: column;
+  gap: 2cqmin;
+  user-select: none;
+  width: 100cqmin;
+  border: 2px dashed gold;
+}
+.hudRow{
+  display: flex;
+  align-items: center;
+  gap: 2cqmin;
+  font-size: 5cqmin;
+  font-weight: bold;
+}
+.hudLabel{
+  min-width: 20cqmin;
+    font-size: 5cqmin;
+    display: flex;
+    justify-content: center;
+
+}
+.barBox{
+  min-width: 40cqmin;
+  height: 4.5cqmin;
+  background-color: #111;
+  border: 0.1cqmin solid black;
+  position: relative;
+  overflow: hidden;
+}
+#hpBar{
+  width: 100%;
+  height: 100%;
+  background-color: #891b1a;
+}
+#batteryBar{
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1;
+}
+#maxHp, #maxBattery{
+  font: 2cqmin;
+  min-width: 10cqmin;
+  text-align: right;
 }

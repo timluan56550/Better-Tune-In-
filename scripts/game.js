@@ -1,7 +1,56 @@
+const hpBar=document.getElementById("hpBar")
+const maxHpElement=document.getElementById("maxHp")
+const batteryBar=document.getElementById("batteryBar")
+const maxBattery=document.getElementById("maxBattery")
+
+
+
+
+
+
+
 let currentAnomaly=null;
 let currentEvidence=[]
+let HP=100;
+const maxHP=100;
+let battery=100;
+
+
+
+
+
+
+
+//audio
 const static=new Audio("static.mp3")
 static.loop=true
+
+function updateBarUI(){
+    //prevetns negative
+    //hp stuff
+    HP=Math.max(HP,0)
+    const percent=(HP/maxHP)*100;
+
+    hpBar.style.width=percent+"%"
+
+    const health= Math.round(HP)+"/"+maxHP
+
+    maxHpElement.innerText=health
+
+    //battery stuff
+    battery=Math.max(battery,0)
+    batteryBar.style.width=battery+"%"
+
+    const max =Math.round(battery)+"%"
+    maxBattery.innerText=max
+
+    if(HP<=0){
+        // endRound(death)
+    }
+}
+
+
+//FREQUENCY STUFF
 function getRandomFrequency(range){
     //example 500-700 gets 500 and 700, output is a STRING
     const [minimum, maximum]=range.split("-")

@@ -1,7 +1,6 @@
 const crankCover=document.getElementById("crankCover")
 const crankImg=document.getElementById("crankImage")
 const crankWarning=document.getElementById("crankWarning")
-let battery=100
 let isCranking=false
 let crankInterval=null
 let QTETimer=null
@@ -13,8 +12,8 @@ const crankStaticImage="https://placehold.co/50x50/gray/white/"
 const crankMovingImage="https://placehold.co/50x50/green/white/"
 
 function startCranking(){
-    //stops if it is cranking
-    if(isCranking){
+    //stops if it is cranking or battery is full
+    if(isCranking||battery>=100){
         return;
     }
 
@@ -27,8 +26,7 @@ function startCranking(){
     crankInterval=setInterval(()=>{
         if (battery<100){
             //this is for to add battery as well as when it reaches 100%
-            battery=Math.min(100, battery+ 0.8)
-                        //TEMPORARY
+            battery=Math.min(100, battery+ 0.4)
 
             updateBarUI()
         }
@@ -40,7 +38,7 @@ nextQTE()
 
 function nextQTE(){
     //2000ms to 3000ms
-    const delay =Math.floor(Math.random()*1000)+2000
+    const delay =Math.floor(Math.random()*6000)+2000
 
     QTETimer = setTimeout(()=>{
         //if its not cranking return
@@ -59,11 +57,13 @@ function crankQTE(){
         //if you are cranking and the warning has occured
         if(isCranking&&isWarning){
             console.log("QTE FAILED")
+                    HP-=15
+                    updateBarUI()
+
             //TEMPORARY
-            // reduceHP(15)
         }
         stopCranking(false)
-    },750)
+    },550)
 }
 
 function hideWarning(){
