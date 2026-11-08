@@ -9,7 +9,7 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: 'Caveat', monospace;
+  font-family: "Caveat", monospace;
 
 }
 #everything{
@@ -51,6 +51,7 @@ container-type: size;
   border: 2px dashed #404b5a;
  }
  #radioBox{
+  position: relative;
   width: 25cqmin;
   height: 25cqmin;
   margin-left: 30cqmin;
@@ -66,40 +67,28 @@ container-type: size;
   gap: 1cqmin;
   align-items: center;
  }
-#radioDisplay{
-  background-color: #2b3544;
-  width: 10cqmin;
-  height: 2.4cqmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0.1cqmin solid #000;
-  padding: 0.2cqmin 0.3cqmin;
 
-}
 #frequencyNumber{
-  font-size: 2cqmin;
+  font-size: 2.5cqmin;
   font-weight: bold;
 }
-#radioTuner{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px dashed gold;
-}
-#radioLabel{
-  color: #afabab;
-  font-size: 2cqmin;
-  font-weight: bold;
-}
+
+
 #freqInput{
-  width: 5cqmin;
+  width: 12cqmin;
+  height: 3.5cqmin;
   cursor: pointer;
   background-color: rgb(106, 96, 96);
-  display: flex;
-  justify-items: center;
+  
+  font-family: "Caveat", monospace;
+  font-size: 3cqmin;
+  text-align: center;
+  box-sizing: border-box;
 }
-
+#freqInput:disabled{
+  cursor: not-allowed;
+  color: #000;
+}
 
  /* Arrow buttons */
  .arrowButton{
@@ -109,6 +98,9 @@ container-type: size;
   width: 3.5cqmin;
   height: 3.2cqmin;
   font-size: 2cqmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  .arrowButton:hover{
   filter: brightness(120%);
@@ -194,7 +186,7 @@ align-items: center;
 justify-content: center;
 box-sizing: border-box;
 z-index: 3;
-  font-family: 'Caveat';
+  font-family: "Caveat";
 
 
  }
@@ -315,9 +307,7 @@ padding: 0;
   justify-content: center;
   padding: 2cqmin;
   text-align: center;
-  position: relative;
   cursor: pointer;
-  position: relative;
   user-select: none;
   box-sizing: border-box;
   border: 2px dashed gold;
@@ -349,3 +339,51 @@ filter:opacity(0.7);
   filter: opacity(1)
 }
 
+#radioPower{
+  position: absolute;
+  border-width: 0;
+  background-color: #891b1a;
+  cursor: pointer;
+  user-select: none;
+  width: 2.5cqmin;
+  height: 2.5cqmin;
+bottom: 1cqmin;
+right: 1cqmin;
+  font-family: "Caveat";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+
+}
+#radioPower.on{
+  background-color: green;
+}
+#crankCover{
+  position: relative;
+  border: 2px dashed gold;
+  width: 15cqmin;
+  height: 15cqmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+#crankCover:hover{
+  filter: brightness(120%);
+transform: translateY(-0.2cqmin);
+}
+#crankWarning{
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3cqmin;
+  font-weight: bold;
+  color:  red;
+}
