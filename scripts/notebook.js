@@ -185,8 +185,15 @@ function guessPage(){
          "</div>"
 
     })
-    //puts all the html into teh page
-    notebookPageClass.innerHTML="<div id='guessGrid'>"+grid+"</div>"
+    let disabled="disabled"
+    if (circledMonster===null){
+        disabled="disabled"
+    }else{
+        disabled=""
+    }
+    //puts the grid and teh button into teh html
+    notebookPageClass.innerHTML="<div id='guessGrid'>"+grid+"</div>"+
+    "<button id='submitButton'"+disabled+">PROCEED</button>"
 
 
     //each card with the class monsterCard
@@ -204,6 +211,18 @@ function guessPage(){
             //refresh when clicked
             guessPage()
         })
+    })
+    
+    let submitButton=document.getElementById("submitButton")
+    submitButton.addEventListener("click",()=>{
+        //if you havent circled a monster
+        if(circledMonster===null){
+            return
+        }
+        
+        if (confirm("Do you want to Proceed?")){
+            endLock()
+        }
     })
 }
 

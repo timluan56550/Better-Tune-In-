@@ -9,6 +9,7 @@ let radio=false
 let timeout=null;
 const delay=750
 const startDelay=1500
+let drain=null
 //resets
 frequencyInput.value="OFF"
 frequencyInput.disabled=true
@@ -26,7 +27,8 @@ radioPower.addEventListener("click", ()=>{
         radioPower.classList.add("on")
         frequencyInput.disabled =false
         updateUI(startDelay)
-        console.log("Off")
+        console.log("On")
+        drainBattery()
 
     }else{
         radioPower.classList.remove("on")
@@ -34,10 +36,33 @@ radioPower.addEventListener("click", ()=>{
         frequencyInput.disabled =true
 
         clearTimeout(timeout)
-        console.log("On")
+        console.log("Off")
         stopAudio()
     }
 })
+
+function drainBattery(){
+clearInterval(drain)
+drain=null
+drain=setInterval(()=>{
+        //if radio is on and battery is greater that 0
+        if(radio && battery>0){
+            battery=Math.max(0,battery-0.7)
+        }
+        updateBarUI()
+    
+if(battery<0){
+      radioPower.classList.remove("on")
+        frequencyInput.value="OFF"
+        frequencyInput.disabled =true
+
+        clearTimeout(timeout)
+        console.log("Off")
+        stopAudio()
+}
+    },1000
+)
+}
 function updateUI(currentDelay){
 // this rounds it to the nearest 10 increment. 
 //stops teh radio if its off

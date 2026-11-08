@@ -2,7 +2,7 @@ const hpBar=document.getElementById("hpBar")
 const maxHpElement=document.getElementById("maxHp")
 const batteryBar=document.getElementById("batteryBar")
 const maxBattery=document.getElementById("maxBattery")
-
+const clockDisplay =document.getElementById("clock")
 
 
 
@@ -13,18 +13,69 @@ let currentAnomaly=null;
 let currentEvidence=[]
 let HP=100;
 const maxHP=100;
-let battery=100;
-
-
-
-
-
-
+let battery=60;
+let shiftHour=10;
+let shiftMinute=0
+let am=false;
+let clockInterval=null
+let shiftEnded=false;
 
 //audio
 const static=new Audio("static.mp3")
 static.loop=true
 
+
+function startShift(){
+clearInterval(clockInterval)
+clockInterval=setInterval(()=>{
+    if(shiftEnded){
+        return;
+    }
+    //convert time
+    shiftMinute+=1
+    if(shiftMinute>=60){
+        shiftMinute=0
+        shiftHour+=1
+        if(shiftHour===12&&!am){
+            am=true;
+        }else if (shiftHour>12){
+            shiftHour=1
+        }
+    }
+    updateClockUI()
+    if(am&&shiftHour===6){
+        endLock()
+    }
+},1000)
+
+}
+function updateClockUI(){
+    let minute=0
+if (shiftMinute<10){
+    minute="0"+shiftMinute
+}else{
+    minute=shiftMinute
+
+}
+let period=""
+if (am){
+    period="AM"
+}else{
+    period="PM"
+}
+clockDisplay.innerText=shiftHour+":"+minute+" "+period
+}
+
+function endLock(){
+    shiftEnded=true
+    clearInterval(clockInterval);
+      radioPower.classList.remove("on")
+        frequencyInput.value="OFF"
+        frequencyInput.disabled =true
+
+        clearTimeout(timeout)
+        stopAudio()
+}
 function updateBarUI(){
     //prevetns negative
     //hp stuff
@@ -43,6 +94,7 @@ function updateBarUI(){
 
     const max =Math.round(battery)+"%"
     maxBattery.innerText=max
+
 
     if(HP<=0){
         // endRound(death)
@@ -107,4 +159,12 @@ return detected
         return null
     }
 }
+
+
+//starting game fucnotins
+//this one picks an anomoly
 startRound()
+//this one updates teh ui
+updateBarUI()
+//this one starts the timer
+startShift()

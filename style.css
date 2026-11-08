@@ -290,7 +290,7 @@ padding: 0;
 #guessGrid{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6cqmin;
+  gap: 1cqmin;
   padding: 2cqmin;
     border: 2px dashed gold;
     align-content: center;
@@ -306,7 +306,6 @@ padding: 0;
   cursor: pointer;
   user-select: none;
   box-sizing: border-box;
-  border: 2px dashed gold;
 }
 .monsterCard:hover{
 transform: scale(110%);
@@ -399,7 +398,6 @@ transform: translateY(-0.2cqmin);
   gap: 2cqmin;
   user-select: none;
   width: 100cqmin;
-  border: 2px dashed gold;
 }
 .hudRow{
   display: flex;
@@ -437,4 +435,107 @@ transform: translateY(-0.2cqmin);
   font: 2cqmin;
   min-width: 10cqmin;
   text-align: right;
+} 
+#clock{
+font-size: 8cqmin;
+font-weight: bold;
+
+}
+
+#submitButton{
+  width:  20cqmin;
+  height:  8cqmin;
+  font-size: 4.5cqmin;
+  font-family: "Caveat", monospace;
+  font-weight: bold;
+  background-color: rgb(149, 128, 100);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+margin: 3cqmin auto 0 auto;
+}
+#submitButton:disabled{
+  cursor: not-allowed;
+}
+#submitButton:hover:not(:disabled){
+  border:  1cqmin solid gold;
+}
+/* big box */
+#fileReport{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+#reportBox{
+ width: 66cqmin;
+  height: 90cqmin;
+  background-color: rgb(190, 148, 92);
+  box-sizing: border-box;
+  padding: 3cqmin;
+  font-family: "Caveat",monospace;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 20cqmin rgba(0, 0, 0, 0.95);
+}
+#reportTitle{
+  font-size:7cqmin;
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+  border-bottom: 1cqmin solid black;
+  padding-bottom: 1cqmin;
+
+}
+#reportStamp{
+  position: absolute;
+  top:  5cqmin;
+  right: 2cqmin;
+  font-size: 4cqmin;
+  font-weight: bold;
+  border:  0.7cqming #7c1a18;
+  color: #7c1a18;
+  transform: rotate(-10deg);
+}
+
+#reportStats{
+  display: flex;
+  flex-direction: column;
+  gap: 3.5cqmin;
+}
+.reportRow{
+  display: flex;
+  justify-content: space-between;
+  font-size: 5.5cqmin;
+}
+.reportValue{
+  color: #b90704;
+    transform: rotate(-6deg);
+
+}
+#shiftButton{
+  width: 80%;
+  height: 7cqmin;
+  margin:  0 auto 0 auto;
+  font-family: "Caveat", monospace;
+  font-size: 5cqmin;
+  cursor: pointer;
+  background-color: #2b3544;
+  text-align: center;
+  opacity: 0.6;
+  
+}
+#shiftButton:hover{
+    background-color: #81735a;
+
+  border: 0.5cqmin solid rgb(92, 80, 12);
+  opacity: 1;
 }
