@@ -10,8 +10,8 @@ let successTimer=null
 const crankSound=new Audio("audio/crank.mp3")   
 crankSound.loop=true
 crankSound.volume=0.05
-const crankStaticImage="https://placehold.co/50x50/gray/white/"
-const crankMovingImage="https://placehold.co/50x50/green/white/"
+const crankStaticImage="images/crank.png"
+const crankMovingImage="images/crankMoving.gif"
 
 function startCranking(){
     //stops if it is cranking or battery is full

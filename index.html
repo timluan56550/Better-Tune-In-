@@ -4,12 +4,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Better Tune In</title>
-        <link rel="preload" as="image" href="Xmark.png">
-        <link rel="preload" as="image" href="Xunmark.png">
+        <link rel="preload" as="image" href="images/Xmark.png">
+        <link rel="preload" as="image" href="images/Xunmark.png">
+         <link rel="preload" as="image" href="images/Xcross.png">
+        <link rel="preload" as="image" href="images/openBook.png">
+        
         <link rel="stylesheet" href="style.css">
          <!-- dev tools -->
-        <script src="https://unpkg.com/eruda"></script>
-    <script>eruda.init();</script>
+        <!-- <script src="https://unpkg.com/eruda"></script>
+    <script>eruda.init();</script> -->
     </head>
 
     
@@ -36,7 +39,7 @@
 
 
     <div id="windowDisplay">
-
+<img id="windowImage"src="images/window.png">
     </div>
     <div id="deskDisplay">
         <div id="radioBox">
@@ -50,11 +53,11 @@
                 <button id="nextFrequency" class="arrowButton">▶</button>
 
             </div>
-<img src="https://placehold.co/50x30">
+<img src="images/radio.png" id="radioImage">
             <button id="radioPower"></button>
         </div>
 <div id="crankCover" title="Click to charge the Radio">
-    <img id="crankImage" src="https://placehold.co/50x50/gray/white/">
+    <img id="crankImage" src="images/crank.png">
     <div id="crankWarning" class="hidden">RELEASE!</div>
 </div>
 
@@ -85,7 +88,7 @@
 <button id="closeNotebookButton" class="hidden">CLOSE</button>
 
 <div id="coffee">
-    <img id="coffeeImage" src="https://placehold.co/50x50/gray/white/">
+    <img id="coffeeImage" src="images/coffee.png">
 </div>
     </div>
 <div id="fileReport" class="hidden">

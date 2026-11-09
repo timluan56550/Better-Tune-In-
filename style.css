@@ -24,15 +24,21 @@ display: flex;
 flex-direction: column;
 overflow: hidden;
 background-color: rgb(36, 35, 35);
-border: 2px dashed blue;
 container-type: size;
  }
 
  #windowDisplay{
   flex: 7;
   position: relative;
-  border: 2px dashed gold;
- }
+z-index: 0;
+}
+#windowImage{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
  #deskDisplay{
   flex: 3;
   box-sizing: border-box;
@@ -41,27 +47,31 @@ container-type: size;
   justify-content: start;
   align-items: center;
   gap: 10cqmin;
-  border: 2px dashed rgb(26, 255, 0);
+  background-color: rgb(93, 66, 21);
+border-top: 2cqmin solid black;
 
  }
 
  #notebookBox{
-  width: 25cqmin;
-  height: 20cqmin;
-  border: 2px dashed #404b5a;
+  width: 40cqmin;
+  height: 22cqmin;
  }
  #radioBox{
   position: relative;
   width: 25cqmin;
   height: 25cqmin;
   margin-left: 30cqmin;
-  border: 2px dashed #225192;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
  }
+ #radioImage{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;}
  #frequency{
-  border: 2px dashed orange;
   display: flex;
   justify-content: center;
   gap: 1cqmin;
@@ -113,13 +123,18 @@ container-type: size;
  #notebookCover{
   width: 100%;
   height: 100%;
-background-image: url(https://placehold.co/10x10);
+background-image: url(images/book.png);
 cursor: pointer;
 box-sizing: border-box;
 background-repeat: no-repeat;
 background-size: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
  }
  #notebookCover:hover{
+  background-image: url(images/openBook.png);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
   transform: translateY(-0.5cqmin);
   filter: brightness(120%);
  }
@@ -136,7 +151,6 @@ background-size: cover;
 z-index: 8;
 box-sizing: border-box;
 font-family: monospace;
-border: 2px dashed red;
   font-family: 'Caveat';
 
  }
@@ -164,7 +178,6 @@ filter: opacity(0.2)}
   margin-top: 5cqmin;
   margin-right: -4cqmin;
   box-sizing: border-box;
-    border: 2px dashed purple;
 
  }
  .tab, .tabActive{
@@ -209,7 +222,6 @@ z-index: 30;
   /* padding: 2cqmin; */
   box-sizing: border-box;
   overflow: hidden;
-    border: 2px dashed blue;
     z-index: 20;
 
  }
@@ -221,7 +233,6 @@ z-index: 30;
   /* display: flex;
   flex-direction: column; */
   /* gap: 2cqmin; */
-  border: 2px dashed gold;
   background-color: grey;
   padding: 10cqmin 2cqmin 2cqmin 2cqmin;
  }
@@ -274,12 +285,12 @@ padding: 0;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-     background-image:url("Xunmark.png");
+     background-image:url("images/Xunmark.png");
      background-size: 110%;
 
 }
 #evidenceTable input[type="checkbox"]:checked{
- background-image:url("Xmark.png");
+ background-image:url("images/Xmark.png");
  filter:brightness(60%)
 }
 #evidenceTable tr:nth-child(even){
@@ -292,7 +303,6 @@ padding: 0;
   grid-template-columns: 1fr 1fr;
   gap: 0.2cqmin;
   padding: 2cqmin;
-    border: 2px dashed gold;
     align-content: center;
 
 }
@@ -327,6 +337,9 @@ filter:opacity(0.7);
   pointer-events: none;
 
 }
+.circleOverlay{
+  transform: scale(1.7);
+}
 .monsterCard.eliminated{
   filter: opacity(0.4)
 }
@@ -340,10 +353,10 @@ filter:opacity(0.7);
   background-color: #891b1a;
   cursor: pointer;
   user-select: none;
-  width: 3cqmin;
-  height: 3cqmin;
-bottom: 1cqmin;
-right: 1cqmin;
+  width: 6.9cqmin;
+  height: 2.7cqmin;
+bottom: 2.9cqmin;
+right: 2.2cqmin;
   font-family: "Caveat";
   display: flex;
   justify-content: center;
@@ -362,16 +375,23 @@ right: 1cqmin;
 }
 #crankCover{
   position: relative;
-  border: 2px dashed gold;
-  width: 25cqmin;
-  height: 25cqmin;
+  width: 20cqmin;
+  height: 20cqmin;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   user-select: none;
-  overflow: hidden;
   box-sizing: border-box;
+}
+#crankImage{
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+    user-select: none;
+
 }
 #crankCover:hover{
   filter: brightness(120%);
@@ -399,6 +419,7 @@ transform: translateY(-0.2cqmin);
   gap: 2cqmin;
   user-select: none;
   width: 100cqmin;
+  z-index: 2;
 }
 .hudRow{
   display: flex;
@@ -406,6 +427,7 @@ transform: translateY(-0.2cqmin);
   gap: 2cqmin;
   font-size: 5cqmin;
   font-weight: bold;
+  color: white
 }
 .hudLabel{
   min-width: 20cqmin;
@@ -440,6 +462,7 @@ transform: translateY(-0.2cqmin);
 #clock{
 font-size: 8cqmin;
 font-weight: bold;
+  color: rgb(205, 222, 94)
 
 }
 
@@ -504,7 +527,7 @@ margin: 3cqmin auto 0 auto;
   right: 2cqmin;
   font-size: 4cqmin;
   font-weight: bold;
-  border:  0.7cqming #7c1a18;
+  border:  0.7cqmin #7c1a18;
   color: #7c1a18;
   transform: rotate(-10deg);
 }
@@ -553,25 +576,7 @@ margin: 3cqmin auto 0 auto;
   box-sizing: border-box;
   
 }
-.infoSketchBox{
-  width: 100%;
-  height: 22cqmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.04);
-  padding: 1cqmin;
-  box-sizing: border-box;
-  
-  
-}
-.infoSketch{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  /* trying out this filter */
-  filter: sepia(0.5);
-}
+
 .infoDetails{
   width: 100%;
   font-family: "Caveat", monospace;
@@ -636,8 +641,8 @@ padding: 1cqmin;
   100% { opacity: 0.8; }
 }
 #coffee{
-  width: 15cqmin;
-  height: 15cqmin;
+  width: 10cqmin;
+  height: 10cqmin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -652,4 +657,6 @@ padding: 1cqmin;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }

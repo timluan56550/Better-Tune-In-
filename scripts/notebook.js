@@ -61,9 +61,6 @@ let prevDisabled= currentInfoIndex===0 ? "disabled" : ""
 let nextDisabled= currentInfoIndex===anomalies.length-1 ? "disabled" : ""
 notebookPageClass.innerHTML=
 "<div id='infoContainer'>"+
-"<div class='infoSketchBox'>"+
-"<img class='infoSketch' src='"+anomaly.sketch+"'>"+
-"</div>"+
 "<div class='infoDetails'>"+
 "<h3 class='infoMonsterName'>"+anomaly.name.toUpperCase()+"</h3>"+
 "<p class='infoDescription'>"+anomaly.description+"</p>"+
@@ -198,11 +195,11 @@ function guessPage(){
         let overlays=""
          if(circledMonster===anomaly.id){
             cardClass+=" circled"
-            overlays+= "<img class='cardOverlay circleOverlay' src='Circle.png'>"
+            overlays+= "<img class='cardOverlay circleOverlay' src='images/Circle.png'>"
 
         }else if(isEliminated){
             cardClass+=" eliminated"
-            overlays+= "<img class='cardOverlay strikeOverlay' src='Xcross.png'>"
+            overlays+= "<img class='cardOverlay strikeOverlay' src='images/Xcross.png'>"
         }
        
 
