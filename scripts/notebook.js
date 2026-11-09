@@ -4,11 +4,18 @@ const closeNotebookButton=document.getElementById("closeNotebookButton")
 const tabButton1=document.getElementById("tabButton1")
 const tabButton2=document.getElementById("tabButton2")
 const tabButton3=document.getElementById("tabButton3")
+const drawSound=new Audio("audio/draw.mp3")
+drawSound.volume=0.3
+drawSound.playbackRate=1.2
+const flipSound=new Audio("audio/flip.mp3")
+flipSound.volume=0.2
+
 //gets the class
 const notebookPageClass=document.querySelector(".notebook")
 //set is prevent duplicates
 let checkedEvidence=new Set()
 let circledMonster=null;
+let currentInfoIndex=0
 //columns
 const columns= [
     "500-700",
@@ -24,9 +31,9 @@ const rows= [
     "No Static",
     "Breathing",
     "Heart Beat",
-    "Red Effect",
-    "Screeches",
-    "Fake help"
+    "Screams",
+    "Wind",
+    "Tapping"
 ]
 
 
@@ -44,9 +51,52 @@ if (page==="evidence"){
 if (page==="guess"){
     guessPage()
 }
+if (page==="info"){
+    infoPage()
+}}
+function infoPage(){
+  let anomaly=anomalies[currentInfoIndex]
+//auto fill did this
+let prevDisabled= currentInfoIndex===0 ? "disabled" : ""
+let nextDisabled= currentInfoIndex===anomalies.length-1 ? "disabled" : ""
+notebookPageClass.innerHTML=
+"<div id='infoContainer'>"+
+"<div class='infoSketchBox'>"+
+"<img class='infoSketch' src='"+anomaly.sketch+"'>"+
+"</div>"+
+"<div class='infoDetails'>"+
+"<h3 class='infoMonsterName'>"+anomaly.name.toUpperCase()+"</h3>"+
+"<p class='infoDescription'>"+anomaly.description+"</p>"+
+"<p class='infoSound'>"+anomaly.soundProfile+"</p>"+
+"</div>"+
+"</div>"+
+"<div id='infoButtons'>"+
+"<button id='prevButton' "+prevDisabled+">◀ PREV</button>"+
+"<span id='infoCounter'>"+(currentInfoIndex+1)+"/"+anomalies.length+"</span>"+
+"<button id='nextButton' "+nextDisabled+">NEXT ▶</button>"+
+"</div>"
+
+let prevButton=notebookPageClass.querySelector("#prevButton")
+let nextButton=notebookPageClass.querySelector("#nextButton")
+
+prevButton.addEventListener("click",()=>{
+    if(currentInfoIndex>0){
+        currentInfoIndex--
+        infoPage()
+        flipSound.currentTime=0
+    flipSound.play()
+    }
+})
+nextButton.addEventListener("click",()=>{
+    if(currentInfoIndex<anomalies.length-1){
+        currentInfoIndex++
+        infoPage()
+        flipSound.currentTime=0
+    flipSound.play()
+    }   
 }
-
-
+)
+}
 function evidencePage(){
   //th = table header, need tr = table row, td = table content / data
     //th table header and colums
@@ -106,6 +156,8 @@ let checkboxes=notebookPageClass.querySelectorAll("#evidenceTable input[type='ch
 checkboxes.forEach((box)=>{
     //checks when the checkbox is clicked
     box.addEventListener("change", (e)=>{
+    drawSound.currentTime=0
+    drawSound.play()
         //sets evid to the checkboxes value set  above
     let evid= e.target.value
     if(e.target.checked){
@@ -126,28 +178,7 @@ checkboxes.forEach((box)=>{
 
 
 
-const anomalies = [
-    {
-        id: "phantom",
-        name: "Phantom",
-        evidence: ["Whispering/500-700", "No Static/710-900"]
-    },
-    {
-    id: "banshee",
-    name: "Banshee",
-    evidence: ["Screeches/910-1100", "Breathing/1110-1300"]
-  },
-  {
-    id: "revenant",
-    name: "Revenant",
-    evidence: ["Heart Beat/500-700", "Loud Static/1310-1500"]
-  },
-  {
-    id: "shade",
-    name: "Shade",
-    evidence: ["Red Effect/710-900", "Fake help/1310-1500"]
-  }
-]
+
 
 function guessPage(){
     let grid =""
@@ -167,11 +198,11 @@ function guessPage(){
         let overlays=""
          if(circledMonster===anomaly.id){
             cardClass+=" circled"
-            overlays+= "<img class='cardOverlay circleOverlay' src='Xunmark.png'>"
+            overlays+= "<img class='cardOverlay circleOverlay' src='Circle.png'>"
 
         }else if(isEliminated){
             cardClass+=" eliminated"
-            overlays+= "<img class='cardOverlay strikeOverlay' src='Xmark.png'>"
+            overlays+= "<img class='cardOverlay strikeOverlay' src='Xcross.png'>"
         }
        
 
@@ -193,13 +224,15 @@ function guessPage(){
     }
     //puts the grid and teh button into teh html
     notebookPageClass.innerHTML="<div id='guessGrid'>"+grid+"</div>"+
-    "<button id='submitButton'"+disabled+">PROCEED</button>"
+    "<button id='submitButton' "+disabled+">PROCEED</button>"
 
 
     //each card with the class monsterCard
     let cards=notebookPageClass.querySelectorAll(".monsterCard")
     cards.forEach((card)=>{
         card.addEventListener("click", ()=>{
+             drawSound.currentTime=0
+    drawSound.play()
             //sets id to id of the card
             let id = card.getAttribute("data-id")
             //when clicked on a card, (null) it first does teh else, then unselect makes it null
@@ -220,8 +253,8 @@ function guessPage(){
             return
         }
         
-        if (confirm("Do you want to Proceed?")){
-            endLock()
+        if (confirm("Do you want to Proceed?")){            
+            endRound(false, circledMonster)
         }
     })
 }
@@ -244,16 +277,22 @@ tabButton1.addEventListener("click", ()=>{
     changeTabs();
     tabButton1.className="tabActive"
     showPage("evidence")
+    flipSound.currentTime=0
+    flipSound.play()
 })
 tabButton2.addEventListener("click", ()=>{
     changeTabs();
     tabButton2.className="tabActive"
     showPage("guess")
+    flipSound.currentTime=0
+    flipSound.play()
 })
 tabButton3.addEventListener("click", ()=>{
     changeTabs();
     tabButton3.className="tabActive"
     showPage("info")
+    flipSound.currentTime=0
+    flipSound.play()
 })
 
 
@@ -264,12 +303,15 @@ tabButton3.addEventListener("click", ()=>{
 notebookCover.addEventListener("click", ()=>{
     notebookDisplay.classList.remove("hidden")
     closeNotebookButton.classList.remove("hidden")
+    flipSound.currentTime=0
+    flipSound.play()
 
 })
 closeNotebookButton.addEventListener("click",()=>{
     notebookDisplay.classList.add("hidden")
         closeNotebookButton.classList.add("hidden")
-
+flipSound.currentTime=0
+    flipSound.play()
 })
 //load before
 showPage("evidence")

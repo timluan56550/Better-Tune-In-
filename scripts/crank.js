@@ -7,7 +7,9 @@ let QTETimer=null
 let reactionTimer=null
 let isWarning=false
 let successTimer=null
-
+const crankSound=new Audio("audio/crank.mp3")   
+crankSound.loop=true
+crankSound.volume=0.05
 const crankStaticImage="https://placehold.co/50x50/gray/white/"
 const crankMovingImage="https://placehold.co/50x50/green/white/"
 
@@ -19,7 +21,8 @@ function startCranking(){
 
     isCranking=true
     crankImg.src=crankMovingImage
-
+crankSound.currentTime=0
+    crankSound.play()
     clearTimeout(successTimer)
     hideWarning()
 //how long it recharges battery
@@ -58,6 +61,8 @@ function crankQTE(){
         if(isCranking&&isWarning){
             console.log("QTE FAILED")
                     HP-=15
+                    damageSound.currentTime=0
+            damageSound.play()
                     updateBarUI()
 
             //TEMPORARY
@@ -82,6 +87,8 @@ function stopCranking(released){
     }
     isCranking=false
         crankImg.src=crankStaticImage
+        crankSound.currentTime=0
+    crankSound.pause()
     //stops the timers
     clearInterval(crankInterval)
     clearTimeout(QTETimer)

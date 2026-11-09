@@ -3,7 +3,7 @@ const maxHpElement=document.getElementById("maxHp")
 const batteryBar=document.getElementById("batteryBar")
 const maxBattery=document.getElementById("maxBattery")
 const clockDisplay =document.getElementById("clock")
-
+const coffee=document.getElementById("coffee")
 
 
 
@@ -13,18 +13,33 @@ let currentAnomaly=null;
 let currentEvidence=[]
 let HP=100;
 const maxHP=100;
-let battery=60;
+let battery=100;
 let shiftHour=10;
 let shiftMinute=0
 let am=false;
 let clockInterval=null
 let shiftEnded=false;
+let hazardInterval=null
+let currentPlayingSound=null;
 
 //audio
-const static=new Audio("static.mp3")
+const static=new Audio("audio/static.mp3")
 static.loop=true
+static.volume=0.01
 
 
+const drinkSound=new Audio("audio/drink.mp3")
+drinkSound.volume=0.2
+
+coffee.addEventListener("click",()=>{
+    if(HP<maxHP){
+        drinkSound.currentTime=0
+        drinkSound.play()
+        HP=Math.min(maxHP,HP+40)
+        coffee.classList.add("hidden")
+        updateBarUI()
+    }
+})
 function startShift(){
 clearInterval(clockInterval)
 clockInterval=setInterval(()=>{
@@ -42,12 +57,13 @@ clockInterval=setInterval(()=>{
             shiftHour=1
         }
     }
+
     updateClockUI()
     if(am&&shiftHour===6){
-        endLock()
+        endRound(false, circledMonster)
     }
 },1000)
-
+redEffectFrequency()
 }
 function updateClockUI(){
     let minute=0
@@ -97,7 +113,7 @@ function updateBarUI(){
 
 
     if(HP<=0){
-        // endRound(death)
+        endRound(true, circledMonster)
     }
 }
 
@@ -138,25 +154,10 @@ function startRound(){
 function stopAudio(){
     static.pause()
     static.currentTime=0
-}
-function radioSignal(frequency){
-    stopAudio()
-    //true if target frequency mathcse frequency
-    const detected=currentEvidence.find(
-        function(signal){
-            return signal.targetFrequency===frequency;
-        }
-    )
-   
-
-    if(detected){
-console.log("signal")
-return detected
-    }else{
-        console.log("static")
-    static.play()
-        
-        return null
+    if(currentPlayingSound){
+        currentPlayingSound.pause()
+        currentPlayingSound.currentTime=0
+        currentPlayingSound=null
     }
 }
 

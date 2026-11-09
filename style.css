@@ -290,7 +290,7 @@ padding: 0;
 #guessGrid{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1cqmin;
+  gap: 0.2cqmin;
   padding: 2cqmin;
     border: 2px dashed gold;
     align-content: center;
@@ -363,8 +363,8 @@ right: 1cqmin;
 #crankCover{
   position: relative;
   border: 2px dashed gold;
-  width: 15cqmin;
-  height: 15cqmin;
+  width: 25cqmin;
+  height: 25cqmin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,11 +380,12 @@ transform: translateY(-0.2cqmin);
 #crankWarning{
   opacity: 1;
   position: absolute;
-  top: 50%;
+  top: 0cqmin;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   font-size: 3cqmin;
   font-weight: bold;
+  text-shadow: 0 0 1cqmin black;
   color:  red;
 }
 
@@ -472,6 +473,8 @@ margin: 3cqmin auto 0 auto;
   justify-content: center;
   align-items: center;
   z-index: 200;
+    background-color: rgba(0, 0, 0, 0.95);
+
 }
 #reportBox{
  width: 66cqmin;
@@ -484,7 +487,7 @@ margin: 3cqmin auto 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 0 20cqmin rgba(0, 0, 0, 0.95);
+  box-shadow: 0 0 5cqmin rgba(255, 255, 255, 0.95);
 }
 #reportTitle{
   font-size:7cqmin;
@@ -525,17 +528,128 @@ margin: 3cqmin auto 0 auto;
   width: 80%;
   height: 7cqmin;
   margin:  0 auto 0 auto;
+  border:none;
   font-family: "Caveat", monospace;
   font-size: 5cqmin;
   cursor: pointer;
-  background-color: #2b3544;
+  background-color: transparent;
   text-align: center;
   opacity: 0.6;
   
 }
 #shiftButton:hover{
-    background-color: #81735a;
 
-  border: 0.5cqmin solid rgb(92, 80, 12);
   opacity: 1;
+}
+
+#infoContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2cqmin;
+  height: 60cqmin;
+  padding: 1cqmin;
+  box-sizing: border-box;
+  
+}
+.infoSketchBox{
+  width: 100%;
+  height: 22cqmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 1cqmin;
+  box-sizing: border-box;
+  
+  
+}
+.infoSketch{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* trying out this filter */
+  filter: sepia(0.5);
+}
+.infoDetails{
+  width: 100%;
+  font-family: "Caveat", monospace;
+  color: #27231f;
+  text-align: center;
+}
+.infoMonsterName{
+  font-size: 4.5cqmin;
+  text-align: center;
+
+}
+.infoDescription{
+  font-size: 3.5cqmin;
+  line-height: 1.2;
+}
+.infoSound{
+  font-size: 2.8cqmin;
+  margin: 1.5cqmin 0 0 0;
+  font-style: italic;
+  color: #27231f;
+padding: 1cqmin;
+}
+#infoButtons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5cqmin;
+  padding-top: 1.5cqmin;
+  border-top: 0.3cqmin solid black;
+}
+#infoButtons button{
+  font-family: "Caveat", monospace;
+  font-size: 3.5cqmin;
+  padding: 0.5cqmin 1cqmin;
+  cursor: pointer;
+  background-color: transparent;
+  color: #27231f;
+
+}
+#infoButtons button:hover:not(:disabled){
+  filter: brightness(120%);
+}
+#infoCounter{
+  font-family: "Caveat", monospace;
+  font-size: 3.5cqmin;
+  color: #27231f;
+}
+#redEffect{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(180,0,0,0.5) 60%,  rgba(255,0,0,0.8) 100%);  opacity: 0.3;
+  pointer-events: none;
+  z-index: 100;
+  animation: redEffectAnimation 0.3s infinite alternate;
+}
+@keyframes redEffectAnimation {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.8; }
+}
+#coffee{
+  width: 15cqmin;
+  height: 15cqmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+#coffee:hover{
+  transform: translateY(-0.2cqmin) scale(1.1);
+  filter: brightness(120%);
+}
+#coffeeImage{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
