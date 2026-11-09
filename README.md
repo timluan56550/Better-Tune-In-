@@ -1,1 +1,2 @@
 # Better Tune In
+A retro horror survival game where you operate an old radio desk to investigate supernatural anomalies. Tune through frequencies to identify hidden evidence, manage your battery and health, and endure lethal audio hazards. Survive your shift from 10 PM to 6 AM—if you can pinpoint what's listening in.
